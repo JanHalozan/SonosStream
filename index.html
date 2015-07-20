@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>SonosStream</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+	<div id="wrapper">
+		<div id="player">
+			<button type="button" id="previous-track-button"></button>
+			<button type="button" onclick="play()" id="play-pause-button"></button>
+			<button type="button" id="next-track-button"></button>
+		</div>
+		<div id="device-list-wrapper">
+			<ul id="device-list">
+				<li class="item">Item</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Script -->
+	<script src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/platform.js"></script>
+	<script type="text/javascript" src="js/discovery.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

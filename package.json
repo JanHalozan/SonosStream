@@ -1,0 +1,21 @@
+{
+   "name": "SonosStream",
+   "private": true,
+   "version": "0.1.0",
+   "description": "This application streams YouTube videos to Sonos players.",
+   "main": "index.html",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "author": "Jan Haložan",
+   "window": {
+      "toolbar": false,
+      "width": 800,
+      "height": 500
+   },
+   "license": "ISC",
+   "dependencies": {
+      "sonos": "0.8.0",
+      "underscore": "1.8.3"
+   }
+}
