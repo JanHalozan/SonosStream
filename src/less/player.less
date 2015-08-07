@@ -1,0 +1,49 @@
+@import "colors.less";
+
+@sideButtonSize: 50px;
+@mainButtonSize: 80px;
+
+.player {
+   position: relative;
+   background: blue;
+   width: 50%;
+   height: 50%;
+   padding-bottom: @mainButtonSize;
+	box-sizing: border-box;
+
+   .controls {
+      position: absolute;
+      height: @mainButtonSize;
+      width: 100%;
+      bottom: 0;
+      background: purple;
+
+      li {
+         display: inline;
+         padding-left: 5px;
+         padding-right: 5px;
+      }
+
+      .Round() {
+         border-radius:9999px;
+      }
+
+      button {
+         width: @sideButtonSize;
+         height: @sideButtonSize;
+         background: orange;
+         outline: none;
+         .Round()
+      }
+
+      .play-pause-button {
+         width: @mainButtonSize;
+         height: @mainButtonSize;
+      }
+   }
+
+   .cover {
+      display: block;
+      height: 100%;
+   }
+}

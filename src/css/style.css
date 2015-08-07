@@ -1,22 +1,80 @@
 * {
-   margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
 }
-
 body {
-   background-color: #1f2023;
+  background-color: #17181b;
+  color: #d6d8d9;
+  display: block;
 }
-
-#player button {
-   width: 25px;
-   height: 25px;
+body .wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #123456;
+  text-align: center;
 }
-
-#player #play-pause-button {
-   width: 50px;
-   height: 50px;
+body .wrapper:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }
-
-#device-list .item {
-   color: red;
+body section {
+  height: 100%;
+}
+body .content {
+  width: 90%;
+  height: 90%;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  background: red;
+}
+.player {
+  position: relative;
+  background: blue;
+  width: 50%;
+  height: 50%;
+  padding-bottom: 80px;
+  box-sizing: border-box;
+}
+.player .controls {
+  position: absolute;
+  height: 80px;
+  width: 100%;
+  bottom: 0;
+  background: purple;
+}
+.player .controls li {
+  display: inline;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.player .controls button {
+  width: 50px;
+  height: 50px;
+  background: orange;
+  outline: none;
+  border-radius: 9999px;
+}
+.player .controls .play-pause-button {
+  width: 80px;
+  height: 80px;
+}
+.player .cover {
+  display: block;
+  height: 100%;
+}
+.queue-wrapper {
+  float: right;
+  background: yellow;
+  width: 50%;
+}
+.devices-wrapper {
+  background: #fff;
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  bottom: 0;
 }
