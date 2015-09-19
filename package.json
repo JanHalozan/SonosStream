@@ -9,7 +9,7 @@
    },
    "author": "Jan Haložan",
    "window": {
-      "toolbar": false,
+      "toolbar": true,
       "width": 800,
       "height": 500
    },
@@ -18,8 +18,10 @@
       "sonos": "0.8.0",
       "underscore": "1.8.3",
       "ip": "0.3.3",
+      "youtube-dl": "1.10.5",
+      "fluent-ffmpeg": "~1.7",
       "ytdl-core": "0.5.1",
-      "fluent-ffmpeg": "~1.7"
+      "request": "2.62.0"
    },
    "devDependencies": {
       "less": "2.5.1"
