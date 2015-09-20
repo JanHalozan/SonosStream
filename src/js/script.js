@@ -8,6 +8,8 @@ var spawn = require('child_process').spawn;
 
 const localIp = ip.address();
 
+var playQueue = [];
+
 //TODO: Check for valid request
 var server = http.createServer(function(req, response) {
    response.writeHead(200, {
@@ -18,7 +20,9 @@ var server = http.createServer(function(req, response) {
    var child = spawn('ffmpeg', ['-i', 'pipe:0', '-acodec', 'libmp3lame','-f', 'mp3', '-']);
    child.stdout.pipe(response);
 
-   ytdl('https://www.youtube.com/watch?v=fj-10lIrboM', {filter: 'audioonly', quality: 'lowest'}).pipe(child.stdin);
+   var videoUrl = 'http://www.youtube.com/watch?v=' + playQueue[0];
+   playQueue.pop();
+   ytdl(videoUrl, {filter: 'audioonly', quality: 'lowest'}).pipe(child.stdin);
 });
 
 server.listen(2000);
@@ -43,6 +47,8 @@ $(document).ready(function() {
 
    $(document).on('click', '.search-results .item', function(event) {
       //TODO: Implement me
+      var videoId = event.target.id;
+      playQueue.push(videoId);
    });
 
    $(document).on('click', '.devices .item', function(event) {
