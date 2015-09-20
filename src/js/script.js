@@ -4,11 +4,11 @@ var sonos = require('sonos');
 var http = require('http');
 var ip = require('ip');
 var ytdl = require('ytdl-core');
-
 var spawn = require('child_process').spawn;
 
-const localIP = ip.address();
+const localIp = ip.address();
 
+//TODO: Check for valid request
 var server = http.createServer(function(req, response) {
    response.writeHead(200, {
       'Content-Type': 'audio/mpeg',
@@ -18,7 +18,7 @@ var server = http.createServer(function(req, response) {
    var child = spawn('ffmpeg', ['-i', 'pipe:0', '-acodec', 'libmp3lame','-f', 'mp3', '-']);
    child.stdout.pipe(response);
 
-   ytdl('https://www.youtube.com/watch?v=M7QmAEN5-eQ', {filter: 'audioonly', quality: 'lowest'}).pipe(child.stdin);
+   ytdl('https://www.youtube.com/watch?v=fj-10lIrboM', {filter: 'audioonly', quality: 'lowest'}).pipe(child.stdin);
 });
 
 server.listen(2000);
@@ -41,11 +41,16 @@ $(document).ready(function() {
       });
    }, SONOS_SEARCH_TIMEOUT);
 
+   $(document).on('click', '.search-results .item', function(event) {
+      //TODO: Implement me
+   });
+
    $(document).on('click', '.devices .item', function(event) {
       var ip = event.target.innerHTML;
       var player = new sonos.Sonos(process.env.SONOS_HOST || ip);
 
-      player.play('http://' + localIP + ':2000/track.mp3', function (err, playing) {
+      //TODO: Error hadling, nicer request - no track.mp3
+      player.play('http://' + localIp + ':2000/track.mp3', function (err, playing) {
          console.log(err);
          console.log(playing);
       });
