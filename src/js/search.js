@@ -18,11 +18,9 @@ $('.search-button').click(function() {
 
       var items = result.items;
       $(items).each(function(index, obj) {
-         if (index == 0)
-            alert(JSON.stringify(obj, null, 2));
          var videoId = obj.id.videoId;
          var title = obj.snippet.title;
-         var item = '<li class="item" id="' + videoId + '">' + title + '</li>';
+         var item = '<li class="item" id="' + videoId + '"><img src="' + obj.snippet.thumbnails.default.url + '">' + title + '</li>';
          resultsList.append(item);
       });
    });
