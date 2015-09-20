@@ -21,47 +21,15 @@ const filePath = '/Users/janhalozan/Downloads/Zablujena\ Generacija/komad.mp3';
 var server = http.createServer(function(req, response) {
 
 
-
-   var command = './node_modules/youtube-dl/bin/youtube-dl --simulate --get-url http://www.youtube.com/watch?v=5qF_qbaWt3Q';
-   var exc = exec(command, function(error, stdout, stderr) {
-      var downloadUrl = stdout.toString();
-      downloadUrl = downloadUrl.substring(0, downloadUrl.length - 1);
-      console.log("This thing is: '" + downloadUrl + "'");
-      response.writeHead(200, {
-         'Content-Type': 'audio/mpeg'
-      });
-
-      var child = spawn('ffmpeg', ['-i', 'pipe:0', '-acodec', 'libmp3lame','-f', 'mp3', '-']);
-      child.stdout.pipe(response);
-
-      // fs.createReadStream(filePath).pipe(child.stdin);
-      request({url: downloadUrl, headers: {'Youtubedl-no-compression': 'True'}}).pipe(child.stdin);
+   response.writeHead(200, {
+      'Content-Type': 'audio/mpeg',
+      'Content-Length': 1234556
    });
 
-   // response.writeHead(200, {
-   // 'Content-Type': 'text/html'
-   // });
-   // response.write("ala");
-   // response.flush();
+   var child = spawn('ffmpeg', ['-i', 'pipe:0', '-acodec', 'libmp3lame','-f', 'mp3', '-']);
+   child.stdout.pipe(response);
 
-   // var stat = fs.statSync(filePath);
-   //
-   //  response.writeHead(200, {
-   //      'Content-Type': 'audio/mpeg',
-   //      'Content-Length': stat.size
-   //  });
-   //
-   //  // We replaced all the event handlers with a simple call to util.pump()
-   //  fs.createReadStream(filePath).pipe(response);
-   //
-   // // var url = 'https://www.youtube.com/watch?v=5qF_qbaWt3Q';
-   // // var video = ytdl(url, {filter: 'audioonly'});
-   // //
-   // // new ffmpeg({source: video}).writeToStream(response, function(data, err) {
-   // //       if (err)
-   // //          alert(err);
-   // //          //console.log("err");
-   // //       });
+   ytdl('http://www.youtube.com/watch?v=5qF_qbaWt3Q', {filter: 'audioonly', quality: 'lowest'}).pipe(child.stdin);
 });
 
 server.listen(2000);
