@@ -18,7 +18,8 @@ var server = http.createServer(function(req, response) {
    var child = spawn('ffmpeg', ['-i', 'pipe:0', '-acodec', 'libmp3lame','-f', 'mp3', '-']);
    child.stdout.pipe(response);
 
-   var videoUrl = 'http://www.youtube.com/watch?v=' + playQueue.dequeueTrack().id;
+   var track = playQueue.dequeueTrack();
+   var videoUrl = 'http://www.youtube.com/watch?v=' + track.id;
    ytdl(videoUrl, {filter: 'audioonly', quality: 'lowest'}).pipe(child.stdin);
 });
 

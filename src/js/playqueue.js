@@ -10,8 +10,9 @@ var playQueue = {
       });
    },
    dequeueTrack: function() {
-      var track = this.queue.shift();
-
+      var track = this.queue[0];
+      this.removeTrackAtIndex(0);
+      
       this.trackRemovedListeners.forEach(function(callback) {
          callback(track);
       });
